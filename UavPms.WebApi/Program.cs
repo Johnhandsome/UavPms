@@ -1,5 +1,6 @@
 using Microsoft.Extensions.FileProviders;
 using Serilog;
+using UavPms.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,7 @@ builder.Host.UseSerilog((context, loggerConfig) =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddInfrastructureServices(builder.Configuration);
 
 // CẤU HÌNH CORS POLICY 
 builder.Services.AddCors(options =>
